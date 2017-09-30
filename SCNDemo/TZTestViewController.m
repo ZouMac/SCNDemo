@@ -228,15 +228,15 @@ typedef enum : NSUInteger {
         [SCNTransaction begin];
         [SCNTransaction setAnimationDuration:0.5];
 
-        [shipNode removeFromParentNode];
+//        [shipNode removeFromParentNode];
 //        shipNode.hidden = YES;
         SCNAction *moveAction = [SCNAction repeatActionForever:[SCNAction moveTo:SCNVector3Make(-50, -50, 50) duration:0.01]];
         SCNAction *actions = [SCNAction sequence:@[moveAction]];
-//        [shipNode runAction:actions completionHandler:^{
-//            shipNode.hidden = NO;
-////            SCNParticleSystem *ps = [SCNParticleSystem particleSystemNamed:@"reactor.scnp" inDirectory:@"art.scnassets/particles"];
-//            [shipNode removeAllParticleSystems];
-//        }];
+        [shipNode runAction:actions completionHandler:^{
+            shipNode.hidden = NO;
+//            SCNParticleSystem *ps = [SCNParticleSystem particleSystemNamed:@"reactor.scnp" inDirectory:@"art.scnassets/particles"];
+            [shipNode removeAllParticleSystems];
+        }];
         
 
         [SCNTransaction commit];
